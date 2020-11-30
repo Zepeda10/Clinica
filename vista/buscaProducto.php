@@ -9,6 +9,7 @@
 	</form>
 
 	<a class="" href="#">Regresar</a>
+	<p>Hola mundo</p>
 
 	<table>
 			<thead>
