@@ -1,6 +1,7 @@
 
 
-<form action="#" method="POST" id="frmAgregarProve" name="frmAgregarProve" accept-charset="utf-8">
+
+<form action="principal.php?c=controlador&a=guardarProveedor" method="POST" id="frmAgregarProve" name="frmAgregarProve" accept-charset="utf-8">
 
     <fieldset>
         <legend>Proveedores</legend>
@@ -10,7 +11,7 @@
         <input type="text" name="nombre_proveedor" placeholder="Nombre del Proveedor" required>
 
         <label for="direccion">Dirección</label>
-        <input type="text" name="direccion" placeholder="Direccion" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
 
         <label for="telefono">Teléfono</label>
         <input type="text" name="telefono" placeholder="Telefono" required>
@@ -21,6 +22,6 @@
     </fieldset>
 
     <input class="#" type="submit" value="Agregar" name="registrarProve">
-    <a class="#" href="#">Regresar</a>
+    <a class="#" href="principal.php?c=controlador&a=muestraProveedores">Regresar</a>
     
 </form>

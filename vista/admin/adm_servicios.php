@@ -1,5 +1,3 @@
-
-
 <body>
 
 	<form action="#" method="POST" accept-charset="utf-8">
