@@ -14,6 +14,8 @@
 	<a href="principal.php?c=controlador&a=muestraServicios">Servicios</a>
 	<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
 	<a href="principal.php?c=controlador&a=muestraProductos">Productos</a>
+	<a href="principal.php?c=controlador&a=muestraHistorialProd">Historial Productos</a>
+	<a href="principal.php?c=controlador&a=muestraHistorialServ">Historial Servicios</a>
 	
 </body> 
 </html>

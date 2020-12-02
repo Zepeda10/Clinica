@@ -90,7 +90,7 @@ class Controlador{
 	/* --------------- MODELO Y VISTA DE SERVICIOS ----------------- */
 
 
-	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	//mostrando vista de servicio (html) creada en carpeta "vista", haciendo interactuar modelo con vista
 	public function muestraServicios(){
 		$objeto = new modelo();
 		$data["titulo"] = "Servicios";
@@ -106,7 +106,7 @@ class Controlador{
 		require_once "vista/admin/agregarServicio.php";
 	}
 
-    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+    //Pasando valores a método insertarServicio del modelo, para agregarlos en la vista de "agregarServicio"
 	public function guardarServicio(){
 		$nomServ = $_POST['nombre_servicio'];
 		$descripcion = $_POST['descripcion'];
@@ -118,7 +118,7 @@ class Controlador{
 			
 	}
 
-	//Mostrando vista para modificar proveedor
+	//Mostrando vista para modificar servicio
 	public function editarServicio($id){
 		$objeto = new modelo();
 		$data["id_servicio"] = $id;
@@ -128,7 +128,7 @@ class Controlador{
 
 	}
 
-	//Llamándo método para actualizar proveedor
+	//Llamándo método para actualizar servicio
 	public function actualizaServicio(){
 		$id = $_POST['id_servicio'];
 		$nomServ = $_POST['nombre_servicio'];
@@ -140,14 +140,14 @@ class Controlador{
 		$objeto->modificarServicio($id,$nomServ, $descripcion, $precio, $descuento);
 	}
 
-	//llamando función eliminar un proveedor
+	//llamando función eliminar un servicio
 	public function borraServicio($id){
 		$objeto = new modelo();
 		$objeto->eliminarServicio($id);
 		header("Location: principal.php?c=controlador&a=muestraServicios");
 	}
 
-	//Llamando método para buscar proveedor
+	//Llamando método para buscar servicio
 	public function buscaServicio(){
 		$buscar = $_POST['buscarServicio'];
 		$productos = new modelo();
@@ -161,7 +161,7 @@ class Controlador{
 	/* --------------- MODELO Y VISTA DE USUARIOS ----------------- */
 
 
-	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	//mostrando vista de usuario (html) creada en carpeta "vista", haciendo interactuar modelo con vista
 	public function muestraUsuarios(){
 		$objeto = new modelo();
 		$data["titulo"] = "Servicios";
@@ -171,13 +171,13 @@ class Controlador{
 		require_once "vista/admin/adm_usuarios.php";
 	}
 
-     //mostrando vista de agregar proveedor
+     //mostrando vista de agregar usuario
 	public function nuevoUsuario(){
 		$data["titulo"] = "Agregar Usuario";
 		require_once "vista/admin/agregarUsuario.php";
 	}
 
-    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+    //Pasando valores a método insertarUsuario del modelo, para agregarlos en la vista de "agregarUsuario"
 	public function guardarUsuario(){
 		$tipo = $_POST['tipo'];
 		$nombre= $_POST['nombre_usuario'];
@@ -191,17 +191,17 @@ class Controlador{
 			
 	}
 
-	//Mostrando vista para modificar proveedor
+	//Mostrando vista para modificar usuario
 	public function editarUsuario($id){
 		$objeto = new modelo();
 		$data["id_servicio"] = $id;
 		$data["titulo"] = "Modificar Usuario";
-		$data["objeto"] = $objeto->getUsuario($id); //llamando método que muestra un producto en el formulario
+		$data["objeto"] = $objeto->getUsuario($id); //llamando método que muestra un usuario en el formulario
 		require_once "vista/admin/modificarUsuario.php";
 
 	}
 
-	//Llamándo método para actualizar proveedor
+	//Llamándo método para actualizar usuario
 	public function actualizaUsuario(){
 		$idUsu = $_POST['id_usuario'];
 		$tipo= $_POST['tipo'];
@@ -215,14 +215,14 @@ class Controlador{
 		$objeto->modificarUsuario($idUsu, $tipo, $nombre, $email, $direccion, $telefono, $pass);
 	}
 
-	//llamando función eliminar un proveedor
+	//llamando función eliminar un usuario
 	public function borraUsuario($id){
 		$objeto = new modelo();
 		$objeto->eliminarUsuario($id);
 		header("Location: principal.php?c=controlador&a=muestraUsuarios");
 	}
 
-	//Llamando método para buscar proveedor
+	//Llamando método para buscar usuario
 	public function buscaUsuario(){
 		$buscar = $_POST['buscarUsuario'];
 		$productos = new modelo();
@@ -235,7 +235,7 @@ class Controlador{
 		/* --------------- MODELO Y VISTA DE PRODUCTOS ----------------- */
 
 
-	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	//mostrando vista de productos (html) creada en carpeta "vista", haciendo interactuar modelo con vista
 	public function muestraProductos(){
 		$objeto = new modelo();
 		$data["titulo"] = "Productos";
@@ -245,13 +245,13 @@ class Controlador{
 		require_once "vista/admin/adm_productos.php";
 	}
 
-     //mostrando vista de agregar proveedor
+     //mostrando vista de agregar producto
 	public function nuevoProducto(){
 		$data["titulo"] = "Agregar Producto";
 		require_once "vista/admin/agregarProducto.php";
 	}
 
-    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+    //Pasando valores a método insertarProducto del modelo, para agregarlos en la vista de "agregarProducto"
 	public function guardarProducto(){
 		$codigo = $_POST['cod_barras'];
 		$nombre= $_POST['nombre_producto'];
@@ -266,7 +266,7 @@ class Controlador{
 			
 	}
 
-	//Mostrando vista para modificar proveedor
+	//Mostrando vista para modificar producto
 	public function editarProducto($id){
 		$objeto = new modelo();
 		$data["id_producto"] = $id;
@@ -276,7 +276,7 @@ class Controlador{
 
 	}
 
-	//Llamándo método para actualizar proveedor
+	//Llamándo método para actualizar producto
 	public function actualizaProducto(){
 		$idProducto = $_POST['id_producto'];
 		$codigo = $_POST['cod_barras'];
@@ -291,14 +291,14 @@ class Controlador{
 		$objeto->modificarProducto($idProducto, $codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv);
 	}
 
-	//llamando función eliminar un proveedor
+	//llamando función eliminar un producto
 	public function borraProducto($id){
 		$objeto = new modelo();
 		$objeto->eliminarProducto($id);
 		header("Location: principal.php?c=controlador&a=muestraProductos");
 	}
 
-	//Llamando método para buscar proveedor
+	//Llamando método para buscar producto
 	public function buscaProducto(){
 		$buscar = $_POST['buscarProducto'];
 		$productos = new modelo();
@@ -306,6 +306,73 @@ class Controlador{
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_productos.php";
+	}
+
+
+		/* --------------- MODELO Y VISTA DE HISTORIAL PRODUCTOS ----------------- */
+
+
+	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	public function muestraHistorialProd(){
+		$objeto = new modelo();
+		$data["titulo"] = "Historial Productos";
+		$data["objeto"] = $objeto->getHistorialProd();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/hist_ventasProductos.php";
+	}
+
+ 	//Agregar valores a historial (PENDIENTE)
+
+
+	//llamando función eliminar un historial producto
+	public function borraHistorialProd($id){
+		$objeto = new modelo();
+		$objeto->eliminarHistorialProd($id);
+		header("Location: principal.php?c=controlador&a=muestraHistorialProd");
+	}
+
+	//Llamando método para buscar historial producto
+	public function buscaHistorialProd(){
+		$buscar = $_POST['buscarHistPro'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarHistorialProd($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/hist_ventasProductos.php";
+	}
+
+			/* --------------- MODELO Y VISTA DE HISTORIAL SERVICIOS ----------------- */
+
+
+	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	public function muestraHistorialServ(){
+		$objeto = new modelo();
+		$data["titulo"] = "Historial Servicios";
+		$data["objeto"] = $objeto->getHistorialServ();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/hist_ventasServicios.php";
+	}
+
+ 	//Agregar valores a historial (PENDIENTE)
+
+
+	//llamando función eliminar un historial servicio
+	public function borraHistorialServ($id){
+		$objeto = new modelo();
+		$objeto->eliminarHistorialServ($id);
+		header("Location: principal.php?c=controlador&a=muestraHistorialServ");
+	}
+
+	//Llamando método para buscar historial producto
+	public function buscaHistorialServ(){
+		$buscar = $_POST['buscarHistServ'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarHistorialServ($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/hist_ventasServicios.php";
 	}
 		
 		

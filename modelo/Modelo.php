@@ -95,7 +95,7 @@ class modelo{
 			
 	}
 
-	//Modificar un proveedor
+	//Modificar un servicio
 	public function modificarServicio($idServ,$nomServ, $descripcion, $precio, $descuento){
 		$sql = " UPDATE t_servicios SET nombre_servicio = '$nomServ' , descripcion = '$descripcion' , precio = '$precio' , descuento = '$descuento' WHERE id_servicio = '$idServ' ";
 
@@ -104,7 +104,7 @@ class modelo{
 		header("Location: principal.php?c=controlador&a=muestraServicios");
 	}
 
-	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	//mostrando un servicio en la vista "modificarServicio", para actualizar los datos
 	public function getServicio($id){
 		$sql = " SELECT * FROM t_servicios WHERE id_servicio = '$id' LIMIT 1 ";
 		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
@@ -115,12 +115,12 @@ class modelo{
 
 	}
 
-	//Eliminar un proveedor
+	//Eliminar un servicio
 	public function eliminarServicio($id){
 		$resultado = $this->db->query(" DELETE FROM t_servicios WHERE id_servicio = '$id' ");
 	}
 
-	//Busca un proveedor
+	//Busca un servicio
 	public function buscarServicio($buscar){
 		$sql = " SELECT * FROM t_servicios WHERE id_servicio LIKE '%".$buscar."%' OR nombre_servicio LIKE UPPER('%".$buscar."%') ";
 		$resultado = $this->db->query($sql);
@@ -145,7 +145,7 @@ class modelo{
 		return $this->objeto;
 	}
 
-	//Inserta un servicio
+	//Inserta un usuario
 	public function insertarUsuario($tipo, $nombre, $email, $direccion, $telefono, $pass){
 		$sql = " INSERT INTO t_usuario (tipo, nombre_usuario, email, direccion, telefono, pass) VALUES ('$tipo' , '$nombre' , '$email' , '$direccion' , '$telefono' , '$pass' ) ";
 
@@ -155,7 +155,7 @@ class modelo{
 			
 	}
 
-	//Modificar un proveedor
+	//Modificar un usuario
 	public function modificarUsuario($idUsu, $tipo, $nombre, $email, $direccion, $telefono, $pass){
 		$sql = " UPDATE t_usuario SET tipo = '$tipo' , nombre_usuario = '$nombre' , email = '$email' , direccion = '$direccion' , telefono = '$telefono' , pass = '$pass' WHERE id_usuario = '$idUsu' ";
 
@@ -164,7 +164,7 @@ class modelo{
 		header("Location: principal.php?c=controlador&a=muestraUsuarios");
 	}
 
-	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	//mostrando un usuario en la vista "modificarUsuario", para actualizar los datos
 	public function getUsuario($id){
 		$sql = " SELECT * FROM t_usuario WHERE id_usuario = '$id' LIMIT 1 ";
 		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
@@ -175,12 +175,12 @@ class modelo{
 
 	}
 
-	//Eliminar un proveedor
+	//Eliminar un usuario
 	public function eliminarUsuario($id){
 		$resultado = $this->db->query(" DELETE FROM t_usuario WHERE id_usuario = '$id' ");
 	}
 
-	//Busca un proveedor
+	//Busca un usuario
 	public function buscarUsuario($buscar){
 		$sql = " SELECT * FROM t_usuario WHERE id_usuario LIKE '%".$buscar."%' OR nombre_usuario LIKE UPPER('%".$buscar."%') ";
 		$resultado = $this->db->query($sql);
@@ -195,7 +195,7 @@ class modelo{
 
 			/* --------------- OPERACIONES CON PRODUCTOS ----------------- */
 
-	//muestra todos los usuarios
+	//muestra todos los productos
 	public function getProductos(){
 		$sql = " SELECT * FROM t_productos ";
 		$resultado = $this->db->query($sql);
@@ -206,7 +206,7 @@ class modelo{
 		return $this->objeto;
 	}
 
-	//Inserta un 
+	//Inserta un producto
 	public function insertarProducto($codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv){
 		$sql = " INSERT INTO t_productos (cod_barras, nombre_producto, descripcion, cantidad, precio_unitario, descuento, id_proveedor) VALUES ('$codigo' , '$nombre' , '$descripcion' , '$cantidad' , '$precio' , '$descuento' , '$idProv' ) ";
 
@@ -216,7 +216,7 @@ class modelo{
 			
 	}
 
-	//Modificar un proveedor
+	//Modificar un producto
 	public function modificarProducto($idProducto, $codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv){
 		$sql = " UPDATE t_productos SET cod_barras = '$codigo' , nombre_producto = '$nombre' , descripcion = '$descripcion' , cantidad = '$cantidad' , precio_unitario = '$precio' , descuento = '$descuento' , id_proveedor = '$idProv' WHERE id_producto = '$idProducto' ";
 
@@ -225,7 +225,7 @@ class modelo{
 		header("Location: principal.php?c=controlador&a=muestraProductos");
 	}
 
-	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	//mostrando un producto en la vista "modificarProducto", para actualizar los datos
 	public function getProducto($id){
 		$sql = " SELECT * FROM t_productos WHERE id_producto = '$id' LIMIT 1 ";
 		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
@@ -236,14 +236,84 @@ class modelo{
 
 	}
 
-	//Eliminar un proveedor
+	//Eliminar un producto
 	public function eliminarProducto($id){
 		$resultado = $this->db->query(" DELETE FROM t_productos WHERE id_producto = '$id' ");
 	}
 
-	//Busca un proveedor
+	//Busca un producto
 	public function buscarProducto($buscar){
 		$sql = " SELECT * FROM t_productos WHERE cod_barras LIKE '%".$buscar."%' OR nombre_producto LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+
+
+		/* --------------- OPERACIONES CON HISTORIAL PRODUCUTOS ----------------- */
+
+	//muestra el hisorial de productos
+	public function getHistorialProd(){
+		$sql = " SELECT * FROM t_historial_producto ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Insertar historial (PENDIENTE)
+	
+
+
+	//Eliminar historial producto 
+	public function eliminarHistorialProd($id){
+		$resultado = $this->db->query(" DELETE FROM t_historial_producto WHERE id = '$id' ");
+	}
+
+	//Busca  hisorial de producto
+	public function buscarHistorialProd($buscar){
+		$sql = " SELECT * FROM t_historial_producto WHERE cod_barras LIKE '%".$buscar."%' OR nombre_producto LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+			/* --------------- OPERACIONES CON HISTORIAL SERVICIOS ----------------- */
+
+	//muestra el hisorial de servicios
+	public function getHistorialServ(){
+		$sql = " SELECT * FROM t_historial_servicio ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Insertar historial (PENDIENTE)
+	
+
+
+	//Eliminar historial servicios 
+	public function eliminarHistorialServ($id){
+		$resultado = $this->db->query(" DELETE FROM t_historial_servicio WHERE id = '$id' ");
+	}
+
+	//Busca  hisorial de servicios
+	public function buscarHistorialServ($buscar){
+		$sql = " SELECT * FROM t_historial_servicio WHERE id_servicio LIKE '%".$buscar."%' OR nombre_servicio LIKE UPPER('%".$buscar."%') ";
 		$resultado = $this->db->query($sql);
 
 		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
