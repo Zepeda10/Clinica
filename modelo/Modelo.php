@@ -192,6 +192,68 @@ class modelo{
 		return $this->objeto;
 	}
 
+
+			/* --------------- OPERACIONES CON PRODUCTOS ----------------- */
+
+	//muestra todos los usuarios
+	public function getProductos(){
+		$sql = " SELECT * FROM t_productos ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Inserta un 
+	public function insertarProducto($codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv){
+		$sql = " INSERT INTO t_productos (cod_barras, nombre_producto, descripcion, cantidad, precio_unitario, descuento, id_proveedor) VALUES ('$codigo' , '$nombre' , '$descripcion' , '$cantidad' , '$precio' , '$descuento' , '$idProv' ) ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraProductos");
+			
+	}
+
+	//Modificar un proveedor
+	public function modificarProducto($idProducto, $codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv){
+		$sql = " UPDATE t_productos SET cod_barras = '$codigo' , nombre_producto = '$nombre' , descripcion = '$descripcion' , cantidad = '$cantidad' , precio_unitario = '$precio' , descuento = '$descuento' , id_proveedor = '$idProv' WHERE id_producto = '$idProducto' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraProductos");
+	}
+
+	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	public function getProducto($id){
+		$sql = " SELECT * FROM t_productos WHERE id_producto = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
+	}
+
+	//Eliminar un proveedor
+	public function eliminarProducto($id){
+		$resultado = $this->db->query(" DELETE FROM t_productos WHERE id_producto = '$id' ");
+	}
+
+	//Busca un proveedor
+	public function buscarProducto($buscar){
+		$sql = " SELECT * FROM t_productos WHERE cod_barras LIKE '%".$buscar."%' OR nombre_producto LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+
 	
 
 	

@@ -1,9 +1,9 @@
 
-<form action="#" method="POST" id="frmAgregarProd" name="frmAgregarProd" accept-charset="utf-8">
+<form action="principal.php?c=controlador&a=guardarProducto" method="POST" id="frmAgregarProd" name="frmAgregarProd" accept-charset="utf-8">
 
     <fieldset>
         <legend>Productos</legend>
-        <input type="hidden" name="id_producto" value="#">
+        <input type="hidden" name="id_producto" value="">
         <label for="cod_barras">Código de Barras</label>
         <input type="text" name="cod_barras" placeholder="Código de Barras" required>
 
@@ -28,6 +28,6 @@
     </fieldset>
 
     <input class="#" type="submit" value="Agregar" name="registrarProd">
-    <a class="#" href="#">Regresar</a>
+    <a class="#" href="principal.php?c=controlador&a=muestraProductos">Regresar</a>
     
 </form>

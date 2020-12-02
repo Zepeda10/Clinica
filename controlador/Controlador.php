@@ -231,10 +231,84 @@ class Controlador{
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_usuarios.php";
 	}
+
+		/* --------------- MODELO Y VISTA DE PRODUCTOS ----------------- */
+
+
+	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	public function muestraProductos(){
+		$objeto = new modelo();
+		$data["titulo"] = "Productos";
+		$data["objeto"] = $objeto->getProductos();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_productos.php";
+	}
+
+     //mostrando vista de agregar proveedor
+	public function nuevoProducto(){
+		$data["titulo"] = "Agregar Producto";
+		require_once "vista/admin/agregarProducto.php";
+	}
+
+    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+	public function guardarProducto(){
+		$codigo = $_POST['cod_barras'];
+		$nombre= $_POST['nombre_producto'];
+		$descripcion = $_POST['descripcion'];
+		$cantidad = $_POST['cantidad'];
+		$precio = $_POST['precio_unitario'];
+		$descuento = $_POST['descuento'];
+		$idProv = $_POST['id_proveedor'];
+
+		$objeto = new modelo();
+		$objeto->insertarProducto($codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv);
+			
+	}
+
+	//Mostrando vista para modificar proveedor
+	public function editarProducto($id){
+		$objeto = new modelo();
+		$data["id_producto"] = $id;
+		$data["titulo"] = "Modificar Producto";
+		$data["objeto"] = $objeto->getProducto($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarProducto.php";
+
+	}
+
+	//Llamándo método para actualizar proveedor
+	public function actualizaProducto(){
+		$idProducto = $_POST['id_producto'];
+		$codigo = $_POST['cod_barras'];
+		$nombre= $_POST['nombre_producto'];
+		$descripcion = $_POST['descripcion'];
+		$cantidad = $_POST['cantidad'];
+		$precio = $_POST['precio_unitario'];
+		$descuento = $_POST['descuento'];
+		$idProv = $_POST['id_proveedor'];
+
+		$objeto = new modelo();
+		$objeto->modificarProducto($idProducto, $codigo, $nombre, $descripcion, $cantidad, $precio, $descuento, $idProv);
+	}
+
+	//llamando función eliminar un proveedor
+	public function borraProducto($id){
+		$objeto = new modelo();
+		$objeto->eliminarProducto($id);
+		header("Location: principal.php?c=controlador&a=muestraProductos");
+	}
+
+	//Llamando método para buscar proveedor
+	public function buscaProducto(){
+		$buscar = $_POST['buscarProducto'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarProducto($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_productos.php";
+	}
 		
-
-
-	
+		
 
 
 

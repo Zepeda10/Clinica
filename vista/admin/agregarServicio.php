@@ -4,7 +4,7 @@
 
     <fieldset>
         <legend>Servicios</legend>
-        <input type="hidden" name="id_servicio" value="#">
+        <input type="hidden" name="id_servicio" value="">
 
         <label for="nombre_servicio">Nombre del Servicio</label>
         <input type="text" name="nombre_servicio" placeholder="Nombre del Servicio" required>
