@@ -1,6 +1,6 @@
 
 
-<form action="#" method="POST" id="frmAgregarServ" name="frmAgregarServ" accept-charset="utf-8">
+<form action="principal.php?c=controlador&a=guardarServicio" method="POST" id="frmAgregarServ" name="frmAgregarServ" accept-charset="utf-8">
 
     <fieldset>
         <legend>Servicios</legend>
@@ -21,6 +21,6 @@
     </fieldset>
 
     <input class="#" type="submit" value="Agregar" name="registrarServ">
-    <a class="#" href="#">Regresar</a>
+    <a class="#" href="principal.php?c=controlador&a=muestraServicios">Regresar</a>
     
 </form>

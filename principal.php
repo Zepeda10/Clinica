@@ -1,4 +1,4 @@
-<?php 
+<?php  
 	
 	//desde este index se relaciona la conexión con el controlador, y en el controlador ya está incluída la vista y el
 	require_once "db/config.php";

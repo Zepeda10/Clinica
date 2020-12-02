@@ -85,7 +85,79 @@ class Controlador{
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_proveedores.php";
 	}
+
+
+	/* --------------- MODELO Y VISTA DE SERVICIOS ----------------- */
+
+
+	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	public function muestraServicios(){
+		$objeto = new modelo();
+		$data["titulo"] = "Servicios";
+		$data["objeto"] = $objeto->getServicios();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_servicios.php";
+	}
+
+     //mostrando vista de agregar proveedor
+	public function nuevoServicio(){
+		$data["titulo"] = "Agregar Servicio";
+		require_once "vista/admin/agregarServicio.php";
+	}
+
+    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+	public function guardarServicio(){
+		$nomServ = $_POST['nombre_servicio'];
+		$descripcion = $_POST['descripcion'];
+		$precio = $_POST['precio'];
+		$descuento = $_POST['descuento'];
+
+		$objeto = new modelo();
+		$objeto->insertarServicio($nomServ, $descripcion, $precio, $descuento);
+			
+	}
+
+	//Mostrando vista para modificar proveedor
+	public function editarServicio($id){
+		$objeto = new modelo();
+		$data["id_servicio"] = $id;
+		$data["titulo"] = "Modificar Servicio";
+		$data["objeto"] = $objeto->getServicio($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarServicio.php";
+
+	}
+
+	//Llamándo método para actualizar proveedor
+	public function actualizaServicio(){
+		$id = $_POST['id_servicio'];
+		$nomServ = $_POST['nombre_servicio'];
+		$descripcion = $_POST['descripcion'];
+		$precio = $_POST['precio'];
+		$descuento = $_POST['descuento'];
+
+		$objeto = new modelo();
+		$objeto->modificarServicio($id,$nomServ, $descripcion, $precio, $descuento);
+	}
+
+	//llamando función eliminar un proveedor
+	public function borraServicio($id){
+		$objeto = new modelo();
+		$objeto->eliminarServicio($id);
+		header("Location: principal.php?c=controlador&a=muestraServicios");
+	}
+
+	//Llamando método para buscar proveedor
+	public function buscaServicio(){
+		$buscar = $_POST['buscarServicio'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarServicio($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_servicios.php";
+	}
 		
+
 
 	
 

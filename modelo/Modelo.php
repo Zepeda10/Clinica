@@ -10,6 +10,7 @@ class modelo{
 		$this->objeto = array();
 	}
 
+
 	/* --------------- OPERACIONES CON PROVEEDORES ----------------- */
 
 	//muestra todos los proveedores
@@ -69,6 +70,68 @@ class modelo{
 
 		return $this->objeto;
 	}
+
+
+		/* --------------- OPERACIONES CON SERVICIOS ----------------- */
+
+	//muestra todos los proveedores
+	public function getServicios(){
+		$sql = " SELECT * FROM t_servicios ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Inserta un servicio
+	public function insertarServicio($nomServ, $descripcion, $precio, $descuento){
+		$sql = " INSERT INTO t_servicios (nombre_servicio, descripcion, precio, descuento) VALUES ('$nomServ' , '$descripcion' , '$precio' , '$descuento' ) ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraServicios");
+			
+	}
+
+	//Modificar un proveedor
+	public function modificarServicio($idServ,$nomServ, $descripcion, $precio, $descuento){
+		$sql = " UPDATE t_servicios SET nombre_servicio = '$nomServ' , descripcion = '$descripcion' , precio = '$precio' , descuento = '$descuento' WHERE id_servicio = '$idServ' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraServicios");
+	}
+
+	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	public function getServicio($id){
+		$sql = " SELECT * FROM t_servicios WHERE id_servicio = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
+	}
+
+	//Eliminar un proveedor
+	public function eliminarServicio($id){
+		$resultado = $this->db->query(" DELETE FROM t_servicios WHERE id_servicio = '$id' ");
+	}
+
+	//Busca un proveedor
+	public function buscarServicio($buscar){
+		$sql = " SELECT * FROM t_servicios WHERE id_servicio LIKE '%".$buscar."%' OR nombre_servicio LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
 	
 
 		
