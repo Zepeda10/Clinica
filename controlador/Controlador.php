@@ -156,6 +156,81 @@ class Controlador{
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_servicios.php";
 	}
+
+
+	/* --------------- MODELO Y VISTA DE USUARIOS ----------------- */
+
+
+	//mostrando vista de proveedores (html) creada en carpeta "vista", haciendo interactuar modelo con vista
+	public function muestraUsuarios(){
+		$objeto = new modelo();
+		$data["titulo"] = "Servicios";
+		$data["objeto"] = $objeto->getUsuarios();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_usuarios.php";
+	}
+
+     //mostrando vista de agregar proveedor
+	public function nuevoUsuario(){
+		$data["titulo"] = "Agregar Usuario";
+		require_once "vista/admin/agregarUsuario.php";
+	}
+
+    //Pasando valores a método insertarProveedor del modelo, para agregarlos en la vista de "agregarProveedor"
+	public function guardarUsuario(){
+		$tipo = $_POST['tipo'];
+		$nombre= $_POST['nombre_usuario'];
+		$email = $_POST['email'];
+		$direccion = $_POST['direccion'];
+		$telefono = $_POST['telefono'];
+		$pass = $_POST['pass'];
+
+		$objeto = new modelo();
+		$objeto->insertarUsuario($tipo, $nombre, $email, $direccion, $telefono, $pass);
+			
+	}
+
+	//Mostrando vista para modificar proveedor
+	public function editarUsuario($id){
+		$objeto = new modelo();
+		$data["id_servicio"] = $id;
+		$data["titulo"] = "Modificar Usuario";
+		$data["objeto"] = $objeto->getUsuario($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarUsuario.php";
+
+	}
+
+	//Llamándo método para actualizar proveedor
+	public function actualizaUsuario(){
+		$idUsu = $_POST['id_usuario'];
+		$tipo= $_POST['tipo'];
+		$nombre= $_POST['nombre_usuario'];
+		$email = $_POST['email'];
+		$direccion = $_POST['direccion'];
+		$telefono = $_POST['telefono'];
+		$pass = $_POST['pass'];
+
+		$objeto = new modelo();
+		$objeto->modificarUsuario($idUsu, $tipo, $nombre, $email, $direccion, $telefono, $pass);
+	}
+
+	//llamando función eliminar un proveedor
+	public function borraUsuario($id){
+		$objeto = new modelo();
+		$objeto->eliminarUsuario($id);
+		header("Location: principal.php?c=controlador&a=muestraUsuarios");
+	}
+
+	//Llamando método para buscar proveedor
+	public function buscaUsuario(){
+		$buscar = $_POST['buscarUsuario'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarUsuario($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_usuarios.php";
+	}
 		
 
 

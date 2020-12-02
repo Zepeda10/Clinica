@@ -132,13 +132,74 @@ class modelo{
 		return $this->objeto;
 	}
 
+		/* --------------- OPERACIONES CON USUARIOS ----------------- */
+
+	//muestra todos los usuarios
+	public function getUsuarios(){
+		$sql = " SELECT * FROM t_usuario ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Inserta un servicio
+	public function insertarUsuario($tipo, $nombre, $email, $direccion, $telefono, $pass){
+		$sql = " INSERT INTO t_usuario (tipo, nombre_usuario, email, direccion, telefono, pass) VALUES ('$tipo' , '$nombre' , '$email' , '$direccion' , '$telefono' , '$pass' ) ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraUsuarios");
+			
+	}
+
+	//Modificar un proveedor
+	public function modificarUsuario($idUsu, $tipo, $nombre, $email, $direccion, $telefono, $pass){
+		$sql = " UPDATE t_usuario SET tipo = '$tipo' , nombre_usuario = '$nombre' , email = '$email' , direccion = '$direccion' , telefono = '$telefono' , pass = '$pass' WHERE id_usuario = '$idUsu' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraUsuarios");
+	}
+
+	//mostrando un proveedor en la vista "modificarProveedor", para actualizar los datos
+	public function getUsuario($id){
+		$sql = " SELECT * FROM t_usuario WHERE id_usuario = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
+	}
+
+	//Eliminar un proveedor
+	public function eliminarUsuario($id){
+		$resultado = $this->db->query(" DELETE FROM t_usuario WHERE id_usuario = '$id' ");
+	}
+
+	//Busca un proveedor
+	public function buscarUsuario($buscar){
+		$sql = " SELECT * FROM t_usuario WHERE id_usuario LIKE '%".$buscar."%' OR nombre_usuario LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+	
+
 	
 
 		
 
 
 }
-
 
 
 ?>

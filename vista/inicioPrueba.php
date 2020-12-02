@@ -12,6 +12,7 @@
 
 	<a href="principal.php?c=controlador&a=muestraProveedores">Proveedores</a>
 	<a href="principal.php?c=controlador&a=muestraServicios">Servicios</a>
+	<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
 	
 </body> 
 </html>

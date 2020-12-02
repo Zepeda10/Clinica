@@ -1,6 +1,6 @@
 
 
-<form action="#" method="POST" id="frmAgregarUsu" name="frmAgregarUsu" accept-charset="utf-8">
+<form action="principal.php?c=controlador&a=guardarUsuario" method="POST" id="frmAgregarUsu" name="frmAgregarUsu" accept-charset="utf-8">
 
     <fieldset>
         <legend>Usuarios</legend>
@@ -30,6 +30,6 @@
     </fieldset>
 
     <input class="#" type="submit" value="Agregar" name="registrarUsu">
-    <a class="#" href="#">Regresar</a>
+    <a class="#" href="principal.php?c=controlador&a=muestraUsuarios">Regresar</a>
     
 </form>
