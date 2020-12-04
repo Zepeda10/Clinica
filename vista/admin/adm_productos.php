@@ -1,16 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos1.css">
+	<title>Administrar Producto</title>
+</head>
+
 
 <body>
 
+<div class="contenedor contenido-centrado seccion">
+	<div class="buscador">
 	<form action="principal.php?c=controlador&a=buscaProducto" method="POST" accept-charset="utf-8">
 		<label for="buscar"></label>
 		<input type="text" id="buscar" name="buscarProducto" placeholder="Ingrese código o nombre">
-		<input class="#" type="submit" value="Buscar">
+		<input class="boton" type="submit" value="Buscar">
 	</form>
 
+	<nav class="navegacion">
 	<a class="" href="principal.php?c=controlador&a=nuevoProducto">Agregar</a>
 	<a class="" href="principal.php">Regresar</a>
+	</nav>
+	</div>
+</div>
 
-	<table>
+	<table id="tabla">
 			<thead>
 				<tr>
 					<th>Id Producto</th>
@@ -51,4 +67,17 @@
 			</tbody>
 		</table>
 
+	<footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a target="_blank" href="principal.php?c=controlador&a=nuevoProv">Agregar</a>
+                <a href="principal.php">Regresar</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2020 &copy;</p>
+        </div>
+    </footer>
+
+
+
+		</html>
 </body>

@@ -1,15 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos1.css">
+	<title>Administrar Servicios</title>
+</head>
+
+
 <body>
+
+<div class="contenedor contenido-centrado seccion">
+	<div class="buscador">
 
 	<form action="principal.php?c=controlador&a=buscaServicio" method="POST" accept-charset="utf-8">
 		<label for="buscar"></label>
 		<input type="text" id="buscar" name="buscarServicio" placeholder="Ingrese código o nombre">
-		<input class="#" type="submit" value="Buscar">
+		<input class="boton" type="submit" value="Buscar">
 	</form>
 
+	<nav class="navegacion">
 	<a class="" href="principal.php?c=controlador&a=nuevoServicio">Agregar</a>
 	<a class="" href="principal.php">Regresar</a>
+	</nav>
 
-	<table>
+</div>
+</div>
+	<table id="tabla">
 			<thead>
 				<tr>
 					<th>Id Servicio</th>
@@ -46,4 +65,16 @@
 			</tbody>
 		</table>
 
+
+		<footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a target="_blank" href="principal.php?c=controlador&a=nuevoProv">Agregar</a>
+                <a href="principal.php">Regresar</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2020 &copy;</p>
+        </div>
+    </footer>
+
 </body>
+</html>
