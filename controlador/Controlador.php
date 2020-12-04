@@ -164,7 +164,7 @@ class Controlador{
 	//mostrando vista de usuario (html) creada en carpeta "vista", haciendo interactuar modelo con vista
 	public function muestraUsuarios(){
 		$objeto = new modelo();
-		$data["titulo"] = "Servicios";
+		$data["titulo"] = "Usuarios";
 		$data["objeto"] = $objeto->getUsuarios();
 
 		//mandando información del modelo a la vista
