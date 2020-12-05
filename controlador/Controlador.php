@@ -78,6 +78,7 @@ class Controlador{
 
 	//Llamando método para buscar proveedor
 	public function buscaProv(){
+		$data["titulo"] = "Proveedores";
 		$buscar = $_POST['buscarProveedor'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarProveedor($buscar);
@@ -149,6 +150,7 @@ class Controlador{
 
 	//Llamando método para buscar servicio
 	public function buscaServicio(){
+		$data["titulo"] = "Servicios";
 		$buscar = $_POST['buscarServicio'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarServicio($buscar);
@@ -224,6 +226,7 @@ class Controlador{
 
 	//Llamando método para buscar usuario
 	public function buscaUsuario(){
+		$data["titulo"] = "Usuarios";
 		$buscar = $_POST['buscarUsuario'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarUsuario($buscar);
@@ -300,6 +303,7 @@ class Controlador{
 
 	//Llamando método para buscar producto
 	public function buscaProducto(){
+		$data["titulo"] = "Productos";
 		$buscar = $_POST['buscarProducto'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarProducto($buscar);
@@ -334,6 +338,7 @@ class Controlador{
 
 	//Llamando método para buscar historial producto
 	public function buscaHistorialProd(){
+		$data["titulo"] = "Historial Productos";
 		$buscar = $_POST['buscarHistPro'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarHistorialProd($buscar);
@@ -367,6 +372,7 @@ class Controlador{
 
 	//Llamando método para buscar historial producto
 	public function buscaHistorialServ(){
+		$data["titulo"] = "Historial Servicios";
 		$buscar = $_POST['buscarHistServ'];
 		$productos = new modelo();
 		$data["objeto"] = $productos->buscarHistorialServ($buscar);
