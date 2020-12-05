@@ -1,66 +1,75 @@
-<?php 
- 	require_once "dashboard_header.php";
- ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos1.css">
+	<title>Historial Servicios</title>
+</head>
 
- <div id="layoutSidenav_content">
-    <main>
-         <div class="container-fluid">
 
-			<form action="principal.php?c=controlador&a=buscaHistorialServ" method="POST" accept-charset="utf-8">
-				<label for="buscar"></label>
-				<input type="text" id="buscar" name="buscarHistServ" placeholder="Ingrese código o nombre">
-				<input class="#" type="submit" value="Buscar">
-			</form>
 
+<body>
+
+
+<div class="contenedor contenido-centrado seccion">
+	<div class="buscador">
+		<form action="principal.php?c=controlador&a=buscaHistorialServ" method="POST" accept-charset="utf-8">
+			<label for="buscar"></label>
+			<input type="text" id="buscar" name="buscarHistServ" placeholder="Ingrese código o nombre">
+			<input class="boton" type="submit" value="Buscar">
+		</form>
+	
+		<nav class="navegacion">
 			<a class="" href="principal.php">Regresar</a>
-			<h1 class="mt-4"><?php echo $data["titulo"]; ?></h1>
+		</nav>
+	</div>
+</div>
 
-	            <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                            <?php echo $data["titulo"]; ?>
-                    </div>
+	<table id="tabla">
+			<thead>
+				<tr>
+					<th>Id Venta</th>
+					<th>Id Servicio</th>
+					<th>Fecha</th>
+					<th>Nombre del Servicio</th>
+					<th>Total</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
 
-                    <div class="card-body">
-                    <div class="table-responsive">
+				foreach ($data['objeto'] as $dato){
+					echo "<tr>";
+					echo "<td>".$dato['id']."</td>";
+					echo "<td>".$dato['id_servicio']."</td>";
+					echo "<td>".$dato['fecha']."</td>";
+					echo "<td>".$dato['nombre_servicio']."</td>";
+					echo "<td>".$dato['total']."</td>";
 
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Id Venta</th>
-									<th>Id Servicio</th>
-									<th>Fecha</th>
-									<th>Nombre del Servicio</th>
-									<th>Total</th>
-									<th>Eliminar</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
+					echo "<td><a href='principal.php?c=controlador&a=borraHistorialserv&id=".$dato['id']."'>Eliminar</a></td>";
+					
+					echo "</tr>";
+				}
 
-								foreach ($data['objeto'] as $dato){
-									echo "<tr>";
-									echo "<td>".$dato['id']."</td>";
-									echo "<td>".$dato['id_servicio']."</td>";
-									echo "<td>".$dato['fecha']."</td>";
-									echo "<td>".$dato['nombre_servicio']."</td>";
-									echo "<td>".$dato['total']."</td>";
+			?>
 
-									echo "<td><a href='principal.php?c=controlador&a=borraHistorialserv&id=".$dato['id']."'>Eliminar</a></td>";
-									
-									echo "</tr>";
-								}
 
-							?>
+			</tbody>
+		</table>
 
-							</tbody>
-						</table>
-					</div>
-                </div>
-            </div>
+
+		<footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="principal.php">Regresar</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2020 &copy;</p>
         </div>
-    </main>
+    </footer>
 
-<?php 
- 	require_once "dashboard_footer.php";
- ?>
+</body>
+
+</html>

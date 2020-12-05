@@ -1,70 +1,80 @@
-<?php 
- 	require_once "dashboard_header.php";
- ?>
 
- <div id="layoutSidenav_content">
-    <main>
-         <div class="container-fluid">
-			<form action="principal.php?c=controlador&a=buscaServicio" method="POST" accept-charset="utf-8">
-				<label for="buscar"></label>
-				<input type="text" id="buscar" name="buscarServicio" placeholder="Ingrese código o nombre">
-				<input class="#" type="submit" value="Buscar">
-			</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos1.css">
+	<title>Administrar Servicios</title>
+</head>
 
-			<a class="" href="principal.php?c=controlador&a=nuevoServicio">Agregar</a>
-			<a class="" href="principal.php">Regresar</a>
 
-			<h1 class="mt-4"><?php echo $data["titulo"]; ?></h1>
+<body>
 
-	            <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                            <?php echo $data["titulo"]; ?>
-                    </div>
+<div class="contenedor contenido-centrado seccion">
+	<div class="buscador">
 
-                    <div class="card-body">
-                    <div class="table-responsive">
+	<form action="principal.php?c=controlador&a=buscaServicio" method="POST" accept-charset="utf-8">
+		<label for="buscar"></label>
+		<input type="text" id="buscar" name="buscarServicio" placeholder="Ingrese código o nombre">
+		<input class="boton" type="submit" value="Buscar">
+	</form>
 
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Id Servicio</th>
-									<th>Nombre del Servico</th>
-									<th>Descrición</th>
-									<th>Precio Unitario</th>
-									<th>Descuento</th>
-									<th>Actualizar</th>
-									<th>Eliminar</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
+	<nav class="navegacion">
+	<a class="" href="principal.php?c=controlador&a=nuevoServicio">Agregar</a>
+	<a class="" href="principal.php">Regresar</a>
+	</nav>
 
-								foreach ($data['objeto'] as $dato){
-									echo "<tr>";
-									echo "<td>".$dato['id_servicio']."</td>";
-									echo "<td>".$dato['nombre_servicio']."</td>";
-									echo "<td>".$dato['descripcion']."</td>";
-									echo "<td>".$dato['precio']."</td>";
-									echo "<td>".$dato['descuento']."</td>";
+</div>
+</div>
+	<table id="tabla">
+			<thead>
+				<tr>
+					<th>Id Servicio</th>
+					<th>Nombre del Servico</th>
+					<th>Descrición</th>
+					<th>Precio Unitario</th>
+					<th>Descuento</th>
+					<th>Actualizar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
 
-									echo "<td><a href='principal.php?c=controlador&a=editarServicio&id=".$dato['id_servicio']."'>Editar</a></td>";
+				foreach ($data['objeto'] as $dato){
+					echo "<tr>";
+					echo "<td>".$dato['id_servicio']."</td>";
+					echo "<td>".$dato['nombre_servicio']."</td>";
+					echo "<td>".$dato['descripcion']."</td>";
+					echo "<td>".$dato['precio']."</td>";
+					echo "<td>".$dato['descuento']."</td>";
 
-									echo "<td><a href='principal.php?c=controlador&a=borraServicio&id=".$dato['id_servicio']."'>Eliminar</a></td>";
-									
-									echo "</tr>";
-								}
+					echo "<td><a href='principal.php?c=controlador&a=editarServicio&id=".$dato['id_servicio']."'>Editar</a></td>";
 
-							?>
+					echo "<td><a href='principal.php?c=controlador&a=borraServicio&id=".$dato['id_servicio']."'>Eliminar</a></td>";
+					
+					echo "</tr>";
+				}
 
-							</tbody>
-						</table>
-					</div>
-                </div>
-            </div>
+			?>
+
+
+
+			</tbody>
+		</table>
+
+
+		<footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a target="_blank" href="principal.php?c=controlador&a=nuevoProv">Agregar</a>
+                <a href="principal.php">Regresar</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2020 &copy;</p>
         </div>
-    </main>
+    </footer>
 
-<?php 
- 	require_once "dashboard_footer.php";
- ?>
+</body>
+</html>
