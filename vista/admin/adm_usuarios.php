@@ -16,7 +16,7 @@
 
 	<form action="principal.php?c=controlador&a=buscaUsuario" method="POST" accept-charset="utf-8">
 		<label for="buscar"></label>
-		<input type="text" id="buscar" name="buscarUsuario" placeholder="Ingrese Código o Nombre">
+		<input type="text" id="buscar" name="buscarUsuario" placeholder="Ingrese código o nombre">
 		<input class="boton" type="submit" value="Buscar">
 	</form>
 	<nav class="navegacion">
