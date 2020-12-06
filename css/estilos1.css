@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html {
     box-sizing: border-box;
     min-height: 100%;
@@ -297,4 +298,305 @@ nav.navegacion-principal {
     color: #494c51;
     margin: 50px 0 0 20px;
     padding-bottom: 10px;
+=======
+html {
+    box-sizing: border-box;
+    min-height: 100%;
+    font-size: 62.5%;
+    position: relative;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/*Globales*/
+
+.contenido-centrado {
+    max-width: 800px!important;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+textarea {
+    height: 20rem;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.contenedor {
+    width: 95%;
+    margin: 0 auto;
+    max-width: 60rem;
+}
+
+.seccion {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+.boton {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+/** Página de proveedores**/
+
+
+/*Buscador*/
+
+input#buscar {
+    padding: 1rem;
+    background-color: #e1e1e1;
+    border: none;
+    border-radius: 1rem;
+}
+
+.contenedor-buscador {
+    width: 600px;
+    float: right;
+    margin: 10rem 20rem 5rem 0;
+}
+
+.buscador {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navegacion a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 2rem;
+    /* = 18px */
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.navegacion a:hover {
+    color: #71B100;
+}
+
+
+/*Tabla Proveedores*/
+
+#tabla {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    /*margin: 0 auto;*/
+    text-align: center;
+    float: right;
+    margin-right: 50px;
+}
+
+#tabla td,
+#tabla th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabla tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabla tr:hover {
+    background-color: #ddd;
+}
+
+#tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #008CBA;
+    color: white;
+}
+
+
+/*Agregar Proveedor*/
+
+legend {
+    font-size: 2rem;
+    color: #4f4f4f;
+}
+
+label {
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+}
+
+input#proveedor {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 3rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+
+/*Navegacion Paginas Agregar*/
+
+.navegacion_agregar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+/*Paginas agregar*/
+
+input#agregar,
+textarea,
+select {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 3rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+
+/*Paginas modificar*/
+
+input#modificar,
+textarea,
+select {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 3rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+textarea {
+    height: 20rem;
+}
+
+
+/*Header*/
+
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: #353940;
+}
+
+.parrafo-admin {
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+div.menu-movil i {
+    height: 8px;
+    margin-bottom: 6px;
+}
+
+nav.navegacion-principal {
+    /*display: none;*/
+}
+
+
+/*Menu*/
+
+.contenedor-menu {
+    width: 20%;
+    height: 90vh;
+    background: #212429;
+    display: flex;
+}
+
+.menu a {
+    display: block;
+    color: #494c51;
+    margin: 0 0 40px 20px;
+}
+
+.menu a i {
+    margin-right: 5px;
+}
+
+.menu a:hover {
+    color: #ffffff;
+}
+
+.opciones a:first-of-type {
+    margin-top: 20px;
+}
+
+.menu p {
+    display: block;
+    color: #494c51;
+    margin: 50px 0 0 20px;
+    padding-bottom: 10px;
+>>>>>>> ef13408448d4da07597d49536f82cc5a64d1bf19
 }
