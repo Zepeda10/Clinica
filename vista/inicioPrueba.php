@@ -24,28 +24,38 @@
 				<i class="far fa-user-circle"></i>
 
 			</div>
-
-
-			<nav class="navegacion-principal clearfix">
-				<a class="boton" href="principal.php?c=controlador&a=muestraProveedores">Proveedores</a>
-				<a href="principal.php?c=controlador&a=muestraServicios">Servicios</a>
-				<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
-				<a href="principal.php?c=controlador&a=muestraProductos">Productos</a>
-				<a href="principal.php?c=controlador&a=muestraHistorialProd">Historial Productos</a>
-				<a href="principal.php?c=controlador&a=muestraHistorialServ">Historial Servicios</a>
-            </nav>
 	
 	</div>
 
 
 </header>
 
-	<a class="boton" href="principal.php?c=controlador&a=muestraProveedores">Proveedores</a>
-	<a href="principal.php?c=controlador&a=muestraServicios">Servicios</a>
-	<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
-	<a href="principal.php?c=controlador&a=muestraProductos">Productos</a>
-	<a href="principal.php?c=controlador&a=muestraHistorialProd">Historial Productos</a>
-	<a href="principal.php?c=controlador&a=muestraHistorialServ">Historial Servicios</a>
-	
+
+<section class="contenedor-menu">
+
+	<div class="menu">
+
+		<p>Gestiones</p>
+		<div class="opciones">
+		<a href="principal.php?c=controlador&a=muestraProveedores"><i class="fas fa-box"></i>Proveedores</a>
+		<a href="principal.php?c=controlador&a=muestraProductos"><i class="fas fa-box"></i>Productos</a>
+		<a href="principal.php?c=controlador&a=muestraServicios"><i class="fas fa-box"></i>Servicios</a>
+		</div>
+
+		
+		<p>Usuarios</p>
+		<div class="opciones">
+		<a href="principal.php?c=controlador&a=muestraUsuarios"><i class="fas fa-box"></i>Usuarios</a>
+		</div>
+
+
+		<p>Historiales</p>
+		<div class="opciones">
+		<a href="principal.php?c=controlador&a=muestraHistorialProd"><i class="fas fa-box"></i>Historial Productos</a>
+		<a href="principal.php?c=controlador&a=muestraHistorialServ"><i class="fas fa-box"></i>Historial Servicios</a>
+		</div>
+
+	</div>
+</section>
 </body> 
 </html>

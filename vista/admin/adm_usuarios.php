@@ -11,7 +11,7 @@
 
 
 <body>
-<div class="contenedor contenido-centrado seccion">
+<div class="contenedor-buscador">
 	<div class="buscador">
 
 	<form action="principal.php?c=controlador&a=buscaUsuario" method="POST" accept-charset="utf-8">
@@ -67,15 +67,9 @@
 			</tbody>
 		</table>
 
-	<footer class="site-footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a target="_blank" href="principal.php?c=controlador&a=nuevoProv">Agregar</a>
-                <a href="principal.php">Regresar</a>
-            </nav>
-            <p class="copyright">Todos los derechos reservados 2020 &copy;</p>
-        </div>
-    </footer>
+		<?php
+			require_once ("vista/inicioPrueba.php");
+		?>
 
 </body>
 </html>
