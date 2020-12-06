@@ -40,6 +40,7 @@
 	        <input id="modificar" type="number" name="id_proveedor" value="<?= $data['objeto']['id_proveedor']; ?>">
 			
 		</fieldset>
+		
 		<nav class="navegacion_agregar">
 		<input class="boton" type="submit" id="btnActProd" name="btnActProd" value="Actualizar">
  		<a class="boton" href="principal.php?c=controlador&a=muestraProductos">Regresar</a>

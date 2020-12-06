@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<div class="contenedor contenido-centrado seccion">
+<div class="contenedor-buscador">
 	<div class="buscador">
 	
 		<form action="principal.php?c=controlador&a=buscaProv" method="POST" accept-charset="utf-8">
@@ -66,7 +66,9 @@
 			</tbody>
 		</table>
 
-	
+		<?php
+		require_once ("vista/inicioPrueba.php");
+	?>
 
 
 </body>

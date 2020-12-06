@@ -1,6 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos1.css">
+	<title>Historial de Ventas</title>
+</head>
 
 
 <body>
+
+<div class="contenedor-buscador">
+	<div class="buscador">
 
 	<form action="principal.php?c=controlador&a=buscaHistorialProd" method="POST" accept-charset="utf-8">
 		<label for="buscar"></label>
@@ -8,9 +20,14 @@
 		<input class="#" type="submit" value="Buscar">
 	</form>
 
+	<nav class="navegacion">
 	<a class="" href="principal.php">Regresar</a>
+	</nav>
 
-	<table>
+	</div>
+</div>
+
+	<table id="tabla">
 			<thead>
 				<tr>
 					<th>Id Venta</th>
@@ -49,4 +66,9 @@
 			</tbody>
 		</table>
 
+		<?php
+			require_once ("vista/inicioPrueba.php");
+		?>
 </body>
+
+</html>
