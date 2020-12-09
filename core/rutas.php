@@ -14,13 +14,19 @@
 		return $control;
 	}	
 
-	function cargarAccion($controlador,$accion,$id=null){
+	function cargarAccion($controlador,$accion,$id=null,$cantidad=null,$idCompra=null){
 
 		if(isset($accion) && method_exists($controlador,$accion)){
 			if($id==null){
 				$controlador->$accion();
+
 			}else{
-				$controlador->$accion($id);
+				if($cantidad!=null && $idCompra!=null){
+					$controlador->$accion($id,$cantidad,$idCompra);
+				}else{
+					$controlador->$accion($id);
+				}
+				
 			}
 			
 		}else{

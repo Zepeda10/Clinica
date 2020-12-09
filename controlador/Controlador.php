@@ -403,10 +403,10 @@ class Controlador{
 				$subtotal = $cantidad * $producto['precio_unitario'];
 
 				$codBarras = $producto['cod_barras'];
-				$nombre = $producto['nombre'];
-				$precio = $producto['precio'];
+				$nombre = $producto['nombre_producto'];
+				$precio = $producto['precio_unitario'];
 
-				insertaEnTemp($idCompra,$idProducto,$codBarras,$nombre,$cantidad,$precio,$subtotal);
+				$objeto->insertaEnTemp($idCompra,$idProducto,$codBarras,$nombre,$cantidad,$precio,$subtotal);
 			}
 		}else{
 			$error = "No existe el producto";

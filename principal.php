@@ -14,11 +14,25 @@
 		$controlador = cargarControlador($_GET['c']);
 
 		if(isset($_GET['a'])){	
+
 			if(isset($_GET['id'])){
-				cargarAccion($controlador,$_GET['a'], $_GET['id']);
+
+				if(isset($_GET['cantidad'])){
+
+					if(isset($_GET['idCompra'])){
+					cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['cantidad'], $_GET['idCompra']);
+				}else{
+					cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['cantidad']);
+				}
+
+				}else{
+					cargarAccion($controlador,$_GET['a'], $_GET['id']);
+				}
+				
 			}else{
 				cargarAccion($controlador,$_GET['a']);		
 			}
+
 		}else{
 			cargarAccion($controlador,ACCION_PRINCIPAL);
 		}

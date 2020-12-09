@@ -359,6 +359,7 @@ class modelo{
 	public function selectIdProducto($idProducto){
 		$sql = "SELECT * FROM t_productos WHERE id_producto = '$idProducto' LIMIT 1";
 		$datos = $this->db->query($sql)->fetch();
+		return $datos;
 	}
 
 	public function insertaEnTemp($idCompra,$idProducto,$codBarras,$nombre,$cantidad,$precio,$subtotal){
