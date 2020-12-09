@@ -11,7 +11,7 @@
     <fieldset>
         <legend>Productos</legend>
         <input id="id_producto" type="hidden" name="id_producto" value="">
-        <input id="id_compra" type="text" name="id_compra" value='<?php echo $id_compra; ?>'>
+        <input id="id_compra" type="hidden" name="id_compra" value='<?php echo $id_compra; ?>'>
 
         <label for="cod_barras">Código de Barras</label>
         <input type="text" id="cod_barras" name="cod_barras" placeholder="Código de Barras" onkeyup="buscarProducto(event,this,this.value)" autofocus>
@@ -36,14 +36,14 @@
 
 
 
-    <table>
+    <table id="tablaProductosVenta">
     	<thead>
     		<tr>
     			<th>Id</th>
     			<th>Código de Barras</th>
     			<th>Nombre</th>
-    			<th>Precio</th>
     			<th>Cantidad</th>
+    			<th>Precio</th>
     			<th>Total</th>
 
     		</tr>
@@ -122,7 +122,20 @@
     							if(resultado==0){
     								console.log("cero");
     							}else{
-    								console.log("uno");
+    								var resultado = JSON.parse(resultado);
+
+                                    if(resultado.error==''){
+                                        $("#tablaProductosVenta tbody").empty();
+                                        $("#tablaProductosVenta tbody").append(resultado.datos);
+                                        $("#total").val(resultado.total);
+
+                                        $("#id_producto").val('');
+                                        $("#cod_barras").val('');
+                                        $("#nombre_producto").val('');                          
+                                        $("#precio_unitario").val('');
+                                        $("#cantidad").val('');
+                                        $("#subtotal").val('');
+                                    }
     							}
     						}
 

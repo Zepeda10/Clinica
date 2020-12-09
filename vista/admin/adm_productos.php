@@ -54,6 +54,7 @@
 					echo "<td>".$dato['cod_barras']."</td>";
 					echo "<td>".$dato['nombre_producto']."</td>";
 					echo "<td>".$dato['descripcion']."</td>";
+					echo "<td>".$dato['cantidad']."</td>";
 					echo "<td>".$dato['precio_unitario']."</td>";
 					echo "<td>".$dato['descuento']."</td>";
 					echo "<td>".$dato['id_proveedor']."</td>";

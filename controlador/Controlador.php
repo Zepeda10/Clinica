@@ -399,6 +399,9 @@ class Controlador{
 			if($datosExiste){
 				$cantidad = $datosExiste->cantidad + $cantidad;
 				$subtotal = $cantidad * $datosExiste->precio;
+
+				$objeto->actualizaProductoVenta($idProducto,$idCompra,$cantidad,$subtotal);
+
 			}else{
 				$subtotal = $cantidad * $producto['precio_unitario'];
 
@@ -411,9 +414,49 @@ class Controlador{
 		}else{
 			$error = "No existe el producto";
 		}
-
+		$res['datos'] = $this->muestraTablaVentas($idCompra);
+		$res['total'] = $this->sumaTotalVentas($idCompra);
 		$res['error'] = $error;
 		echo json_encode($res);
+	}
+
+	public function muestraTablaVentas($idCompra){
+		$objeto = new modelo();
+		$resultado = $objeto->porFolio($idCompra);
+
+		$fila='';
+		$numFila = 0;
+
+		foreach ($resultado as $row) {
+			$numFila++;
+			$fila.= "<tr id = 'fila".$numFila."'>";
+
+			$fila.= "<td>".$numFila."</td>";
+			$fila.= "<td>".$row['cod_barras']."</td>";
+			$fila.= "<td>".$row['nombre']."</td>";
+			$fila.= "<td>".$row['cantidad']."</td>";
+			$fila.= "<td>".$row['precio']."</td>";
+			$fila.= "<td>".$row['subtotal']."</td>";
+			$fila.= "<td> <a onclick=\"eliminaProductoCarrito(".$row['id_producto'].", '".$idCompra."' )\" class='borrar' >Eliminar</a> </td>";
+ 
+			$fila.= "</tr>";
+		}
+
+		return $fila;
+	}
+
+
+	public function sumaTotalVentas($idCompra){
+		$objeto = new modelo();
+		$resultado = $objeto->porFolio($idCompra);
+
+		$total = 0;
+
+		foreach ($resultado as $row) {
+			$total+=$row['subtotal'];
+		}
+
+		return $total;
 	}
 
 

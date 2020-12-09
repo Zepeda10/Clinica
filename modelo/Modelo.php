@@ -351,9 +351,10 @@ class modelo{
 	//Comprobando si ya existe un producto escaneado, para solo cambiar su cantidad
 	public function porIdCompra($idProducto, $folio){
 		$sql = "SELECT * FROM t_temp_comprapro WHERE folio = '$folio' AND id_producto = '$idProducto' LIMIT 1";
-		$datos = $this->db->query($sql)->fetch();
+		//$datos = $this->db->query($sql)->fetch();
+		$datos = $this->db->query($sql);
 
-		return $datos;
+		return $datos->fetchObject();
 	}
 
 	public function selectIdProducto($idProducto){
@@ -367,6 +368,20 @@ class modelo{
 		$sql = "INSERT INTO t_temp_comprapro (folio,id_producto,cod_barras,nombre,cantidad,precio,subtotal) VALUES ('$idCompra' , '$idProducto' , '$codBarras' , '$nombre' , '$cantidad' , '$precio' , '$subtotal' )";
 
 		$datos = $this->db->query($sql);
+	}
+
+	public function porFolio($folio){
+		$sql = "SELECT * FROM t_temp_comprapro WHERE folio = '$folio' ";
+		$datos = $this->db->query($sql);
+
+		return $datos;
+	}
+
+
+	public function actualizaProductoVenta($idProducto,$idCompra,$cantidad,$subtotal){
+		$sql = " UPDATE t_temp_comprapro SET cantidad = '$cantidad' , subtotal = '$subtotal' WHERE id_producto = '$idProducto' AND folio = '$idCompra' ";
+		$resultado = $this->db->query($sql);
+
 	}
 		
 
