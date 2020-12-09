@@ -144,4 +144,24 @@
     		}
 
     	}
+
+
+        function eliminarProducto(id_producto,id_compra){
+                    $.ajax({
+                        url:'principal.php?c=controlador&a=eliminarProdVenta&id='+id_producto+'&idCompra='+id_compra,
+                            success: function(resultado){
+                                if(resultado==0){
+                                    $(tagCodigo).val('');
+                                }else{
+                                    var resultado = JSON.parse(resultado);
+                                    $("#tablaProductosVenta tbody").empty();
+                                    $("#tablaProductosVenta tbody").append(resultado.datos);
+                                    $("#total").val(resultado.total);
+                                }
+                            }
+
+                    });
+ 
+        }
+
     </script>

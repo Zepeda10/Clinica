@@ -381,8 +381,13 @@ class modelo{
 	public function actualizaProductoVenta($idProducto,$idCompra,$cantidad,$subtotal){
 		$sql = " UPDATE t_temp_comprapro SET cantidad = '$cantidad' , subtotal = '$subtotal' WHERE id_producto = '$idProducto' AND folio = '$idCompra' ";
 		$resultado = $this->db->query($sql);
-
 	}
+
+	public function eliminaProductoVenta($idProducto,$idCompra){
+		$resultado = $this->db->query(" DELETE FROM t_temp_comprapro WHERE id_producto = '$idProducto' AND folio = '$idCompra' ");
+	}
+
+
 		
 
 

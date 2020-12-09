@@ -437,7 +437,7 @@ class Controlador{
 			$fila.= "<td>".$row['cantidad']."</td>";
 			$fila.= "<td>".$row['precio']."</td>";
 			$fila.= "<td>".$row['subtotal']."</td>";
-			$fila.= "<td> <a onclick=\"eliminaProductoCarrito(".$row['id_producto'].", '".$idCompra."' )\" class='borrar' >Eliminar</a> </td>";
+			$fila.= "<td> <a onclick=\"eliminarProducto(".$row['id_producto'].", '".$idCompra."' )\" class='borrar' >Eliminar</a> </td>";
  
 			$fila.= "</tr>";
 		}
@@ -457,6 +457,28 @@ class Controlador{
 		}
 
 		return $total;
+	}
+
+
+	public function eliminarProdVenta($idProducto,$idCompra){
+		$objeto = new modelo();
+		$datosExiste = $objeto->porIdCompra($idProducto, $idCompra);
+
+			if($datosExiste){
+				if($datosExiste->cantidad >1){
+					$cantidad = $datosExiste->cantidad - 1;
+					$subtotal = $cantidad * $datosExiste->precio;
+					$objeto->actualizaProductoVenta($idProducto,$idCompra,$cantidad,$subtotal);
+				}else{
+					$objeto->eliminaProductoVenta($idProducto,$idCompra);
+				}
+
+			}
+
+		$res['datos'] = $this->muestraTablaVentas($idCompra);
+		$res['total'] = $this->sumaTotalVentas($idCompra);
+		$res['error'] = '';
+		echo json_encode($res);
 	}
 
 
