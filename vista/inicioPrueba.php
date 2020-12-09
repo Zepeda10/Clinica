@@ -55,6 +55,11 @@
 		<a href="principal.php?c=controlador&a=muestraHistorialServ"><i class="fas fa-box"></i>Historial Servicios</a>
 		</div>
 
+		<p>Ventas</p>
+		<div class="opciones">
+		<a href="principal.php?c=controlador&a=muestraIniciarVenta"><i class="fas fa-box"></i>Realizar Venta</a>
+		</div>
+
 	</div>
 </section>
 </body> 

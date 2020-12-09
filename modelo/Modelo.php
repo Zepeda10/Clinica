@@ -324,10 +324,49 @@ class modelo{
 	}
 
 
-	
+		/* --------------- OPERACIONES CON INIVIAR VENTA ----------------- */
 
 	
+	public function buscaPorCodigo($codigo){
+		$sql = "SELECT * FROM t_productos WHERE cod_barras = '$codigo' LIMIT 1 ";
+		$datos = $this->db->query($sql)->fetch();//ejecutando la consulta con la conexión establecida
 
+		//$datos->fetch();
+
+		$res['existe'] = false;
+		$res['error'] = '';
+		$res['datos'] = '';
+				
+		if($datos){
+			$res['datos'] = $datos;
+			$res['existe'] = true;
+		} else{
+			$res['error'] = 'No existe el producto';
+			$res['existe'] = false;
+		}
+
+		echo json_encode($res);
+	}
+
+	//Comprobando si ya existe un producto escaneado, para solo cambiar su cantidad
+	public function porIdCompra($idProducto, $folio){
+		$sql = "SELECT * FROM t_temp_comprapro WHERE folio = '$folio' AND id_producto = '$idProducto' LIMIT 1";
+		$datos = $this->db->query($sql)->fetch();
+
+		return $datos;
+	}
+
+	public function selectIdProducto($idProducto){
+		$sql = "SELECT * FROM t_productos WHERE id_producto = '$idProducto' LIMIT 1";
+		$datos = $this->db->query($sql)->fetch();
+	}
+
+	public function insertaEnTemp($idCompra,$idProducto,$codBarras,$nombre,$cantidad,$precio,$subtotal){
+
+		$sql = "INSERT INTO t_temp_comprapro (folio,id_producto,cod_barras,nombre,cantidad,precio,subtotal) VALUES ('$idCompra' , '$idProducto' , '$codBarras' , '$nombre' , '$cantidad' , '$precio' , '$subtotal' )";
+
+		$datos = $this->db->query($sql);
+	}
 		
 
 

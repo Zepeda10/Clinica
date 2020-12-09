@@ -374,8 +374,47 @@ class Controlador{
 		//mandando información del modelo a la vista
 		require_once "vista/admin/hist_ventasServicios.php";
 	}
+
+
+	/* --------------- MODELO Y VISTA DE HISTORIAL REALIZAR VENTA ----------------- */
 		
-		
+	public function muestraIniciarVenta(){
+		require_once "vista/ventas.php";
+	}
+
+	public function buscarPorCodigo($codigo){
+		$objeto = new modelo();
+		$objeto->buscaPorCodigo($codigo);
+	}
+
+	public function insertaProdTemp($idProducto,$cantidad,$idCompra){
+		$objeto = new modelo();
+		$error='';
+
+		$producto = $objeto->selectIdProducto($idProducto);
+
+		if($producto){
+			$datosExiste = $objeto->porIdCompra($idProducto, $idCompra);
+
+			if($datosExiste){
+				$cantidad = $datosExiste->cantidad + $cantidad;
+				$subtotal = $cantidad * $datosExiste->precio;
+			}else{
+				$subtotal = $cantidad * $producto['precio_unitario'];
+
+				$codBarras = $producto['cod_barras'];
+				$nombre = $producto['nombre'];
+				$precio = $producto['precio'];
+
+				insertaEnTemp($idCompra,$idProducto,$codBarras,$nombre,$cantidad,$precio,$subtotal);
+			}
+		}else{
+			$error = "No existe el producto";
+		}
+
+		$res['error'] = $error;
+		echo json_encode($res);
+	}
 
 
 
