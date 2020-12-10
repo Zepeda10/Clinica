@@ -30,7 +30,7 @@
         <label for="subtotal">Subtotal</label>
         <input type="text" id="subtotal" name="subtotal" readonly="true">
 
-        <button type="button" id="agregarProducto" name="agregarProducto" onclick="agregaProducto(id_producto.value,cantidad.value, '<?php echo $id_compra; ?>')">Agregar</button>
+        <button type="button" id="agregarProducto" name="agregarProducto" onclick="agregaProducto(id_producto.value,'<?php echo $id_compra; ?>',cantidad.value)">Agregar</button>
 
     </fieldset>
 
@@ -110,14 +110,14 @@
     	}
 
 
-    	function agregaProducto(id_producto,cantidad,id_compra){
+    	function agregaProducto(id_producto,id_compra,cantidad){
 
     		if(id_producto!=null && id_producto!=0 && cantidad > 0){		
 
     				console.log("malandro 2");
 
     				$.ajax({
-    					url:'principal.php?c=controlador&a=insertaProdTemp&id='+id_producto+'&cantidad='+cantidad+'&idCompra='+id_compra,
+    					url:'principal.php?c=controlador&a=insertaProdTemp&id='+id_producto+'&idCompra='+id_compra+'&cantidad='+cantidad,
     						success: function(resultado){
     							if(resultado==0){
     								console.log("cero");

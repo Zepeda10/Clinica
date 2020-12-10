@@ -1,4 +1,4 @@
-<?php  
+<?php   
 	
 	//desde este index se relaciona la conexión con el controlador, y en el controlador ya está incluída la vista y el
 	require_once "db/config.php";
@@ -17,23 +17,25 @@
 
 			if(isset($_GET['id'])){
 
-				if(isset($_GET['cantidad'])){
+				if(isset($_GET['idCompra'])){
 
-					if(isset($_GET['idCompra'])){
-					cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['cantidad'], $_GET['idCompra']);
-				}else{
-					cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['cantidad']);
-				}
+					if(isset($_GET['cantidad'])){
+						//si está seteado a, id, cantidad e idCompra
+						cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['idCompra'], $_GET['cantidad']);
 
-				}else{
+					}else{//si está seteado a, id e idCompra pero no cantidad
+						cargarAccion($controlador,$_GET['a'], $_GET['id'], $_GET['idCompra']);
+					}
+
+				}else{//si está seteado a e id pero no idCompra
 					cargarAccion($controlador,$_GET['a'], $_GET['id']);
 				}
 				
-			}else{
+			}else{//si está seteado a pero no id
 				cargarAccion($controlador,$_GET['a']);		
 			}
 
-		}else{
+		}else{//si no está seteado a
 			cargarAccion($controlador,ACCION_PRINCIPAL);
 		}
 

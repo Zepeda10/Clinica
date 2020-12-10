@@ -387,7 +387,7 @@ class Controlador{
 		$objeto->buscaPorCodigo($codigo);
 	}
 
-	public function insertaProdTemp($idProducto,$cantidad,$idCompra){
+	public function insertaProdTemp($idProducto,$idCompra,$cantidad){
 		$objeto = new modelo();
 		$error='';
 

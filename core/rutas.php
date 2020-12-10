@@ -12,21 +12,29 @@
 		require_once $archivoControlador;
 		$control = new $nombreControlador();
 		return $control;
-	}	
+	}	 
 
-	function cargarAccion($controlador,$accion,$id=null,$cantidad=null,$idCompra=null){
+	function cargarAccion($controlador,$accion,$id=null,$idCompra=null,$cantidad=null){
 
 		if(isset($accion) && method_exists($controlador,$accion)){
-			if($id==null){
-				$controlador->$accion();
+			if($id!=null){
 
-			}else{
-				if($cantidad!=null && $idCompra!=null){
-					$controlador->$accion($id,$cantidad,$idCompra);
-				}else{
+				if($idCompra!=null){
+
+					if($cantidad!=null){
+						//si está seteado a, id, cantidad e idCompra
+						$controlador->$accion($id,$idCompra,$cantidad);
+
+					}else{//si está seteado a, id e idCompra pero no cantidad
+						$controlador->$accion($id,$idCompra);
+					}
+
+				}else{//si está seteado a e id pero no idCompra
 					$controlador->$accion($id);
 				}
 				
+			}else{//si está seteado a pero no id
+				$controlador->$accion();		
 			}
 			
 		}else{
