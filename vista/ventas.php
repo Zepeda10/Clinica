@@ -3,15 +3,17 @@
 
 <?php 
 	$id_compra = uniqid();
+    $fecha = Date("Y-m-d H:i:s");
 ?>
 
 <h2 class="fw-300 centrar-texto">Vender</h2>
-<form action="#" method="POST" id="frmVender" name="frmVender" accept-charset="utf-8">
+<form action="principal.php?c=controlador&a=terminarCompra" method="POST" id="frmVender" name="frmVender" accept-charset="utf-8">
 
     <fieldset>
         <legend>Productos</legend>
         <input id="id_producto" type="hidden" name="id_producto" value="">
         <input id="id_compra" type="hidden" name="id_compra" value='<?php echo $id_compra; ?>'>
+        <input id="fecha" type="hidden" name="fecha" value='<?php echo $fecha; ?>'>
 
         <label for="cod_barras">Código de Barras</label>
         <input type="text" id="cod_barras" name="cod_barras" placeholder="Código de Barras" onkeyup="buscarProducto(event,this,this.value)" autofocus>
@@ -35,7 +37,6 @@
     </fieldset>
 
 
-
     <table id="tablaProductosVenta">
     	<thead>
     		<tr>
@@ -53,14 +54,24 @@
     	</tbody>
     </table>
 
-
     <h2>Total</h2>
     <input type="text" id="total" name="total" readonly="true" value="0.0">
+
+    <button type="button" id="completaCompra">Completar compra</button>
 
 
     <script>
     	$(document).ready(function(){
+            $("#completaCompra").click(function(){
+                let nFila = $("#tablaProductosVenta tr").length;
 
+                if(nFila<2){ //significa que no hay datos, solo está el encabezado de la tabla
+                    alert("No hay productos en el carrito de compra");
+                }else{
+                    $("#frmVender").submit();
+                }
+
+            });
     	});
 
     	function buscarProducto(e,tagCodigo,codigo){

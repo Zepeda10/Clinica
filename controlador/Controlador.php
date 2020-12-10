@@ -481,6 +481,32 @@ class Controlador{
 		echo json_encode($res);
 	}
 
+	public function terminarCompra(){
+		$objeto = new modelo();
+
+		$idCompra = $_POST["id_compra"];
+		$idUsuario = 3;
+		$total = $_POST["total"];
+
+		$resultadoId = $objeto->insertaProdHist($idCompra,$idUsuario,$total);
+
+		if($resultadoId){
+			$resultadoCompra = $objeto->porFolio($idCompra);
+
+			foreach ($resultadoCompra as $row) {
+				$objeto->insertaProdVendido($resultadoId,$row['id_producto'],$row['nombre'],$row['cantidad'],$row['precio']);
+
+				$objeto->actualizaStock($row['id_producto'], $row['cantidad']);
+			}
+
+			$objeto->eliminaProdTemp($idCompra);
+
+		}
+
+		header("Location: principal.php?c=controlador&a=muestraIniciarVenta");
+	}
+
+
 
 
 }

@@ -387,6 +387,33 @@ class modelo{
 		$resultado = $this->db->query(" DELETE FROM t_temp_comprapro WHERE id_producto = '$idProducto' AND folio = '$idCompra' ");
 	}
 
+	public function lastInsertId(){
+        return $this->db->lastInsertId();
+    }
+
+	public function insertaProdHist($idCompra,$idUsuario,$total){
+		$sql = "INSERT INTO t_historial_producto (folio,id_usuario,total) VALUES ('$idCompra' , '$idUsuario' , '$total' )";
+
+		$datos = $this->db->query($sql);
+
+		return $this->db->lastInsertId();//Retorna el ID de la consulta insertada
+	}
+
+	public function insertaProdVendido($idCompra,$idProducto,$nombre,$cantidad,$precio){
+		$sql = "INSERT INTO t_productos_vendidos (id_historial,id_producto,nombre,cantidad, precio) VALUES ('$idCompra' , '$idProducto' , '$nombre' , '$cantidad' , '$precio' )";
+
+		$datos = $this->db->query($sql);
+	}
+
+	public function actualizaStock($idProducto, $cantidad){
+		$sql = " UPDATE t_productos SET cantidad = cantidad - $cantidad WHERE id_producto = '$idProducto' ";
+		$resultado = $this->db->query($sql);
+	}
+
+	public function eliminaProdTemp($idCompra){
+		$resultado = $this->db->query(" DELETE FROM t_temp_comprapro WHERE folio = '$idCompra' ");
+	}
+
 
 		
 
